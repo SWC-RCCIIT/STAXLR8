@@ -1,0 +1,134 @@
+@import "_breakpoints", "_functions", "_variables";
+$colors: (
+  font-white: #fff,
+  bgcolor: #e8e8e8,
+  secondary: #5cb0a7b5
+);
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+@mixin breakpoint($point) {
+  @if $point=xl {
+    @media (min-width: 1455px) {
+      @content;
+    }
+  }
+}
+//++++++ +++++++//
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+  background: color(bgcolor);
+  font-family: "Montserrat", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+}
+.bgcolor-grey {
+  background: color(bgcolor);
+}
+.bgcolor-green {
+  background: color(secondary);
+}
+.bgcolor-white {
+  background: color(font-white);
+}
+.sectionWrapper {
+  max-width: 1320px;
+  padding: 0 10px;
+  margin: 0 auto;
+  position: relative;
+}
+.voiceRecogWrapper {
+  .sectionWrapper {
+    padding: 20px;
+  }
+  .voiceRecog {
+    position: relative;
+    &:before {
+      content: "";
+      right: 0;
+      background: color(secondary);
+      position: absolute;
+      width: 41.666667%;
+      height: 100%;
+    }
+  }
+  .voiceRecogBlock {
+    width: 100%;
+    min-height: 620px;
+    padding: 25px;
+    position: relative;
+    overflow-y: visible;
+    h4 {
+      font-size: 25px;
+      color: #989898;
+      letter-spacing: 1px;
+      position: absolute;
+      margin: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &.d-hidehtag {
+      h4 {
+        display: none;
+      }
+    }
+
+    .contentBlock {
+      p {
+        font-size: 16px;
+        margin: 0 0 5px;
+        line-height: 24px;
+      }
+    }
+  }
+  .detailsBlockWrap {
+    .detailsBlock {
+      padding: 15px 10px;
+      margin: 0 auto;
+      width: 85%;
+      box-shadow: 0 5px 35px rgba(0, 0, 0, 0.1);
+      h4 {
+        font-size: 20px;
+        margin: 0 0 5px;
+      }
+      p {
+        margin: 0;
+        font-size: 15px;
+        line-height: 26px;
+      }
+    }
+    .detailsBlock + .detailsBlock {
+      margin: 25px auto 0;
+    }
+  }
+  .miciconWrap {
+    width: max-content;
+    display: block;
+    margin: 30px auto 0;
+    cursor: pointer;
+    .mic {
+      width: 60px;
+      height: 60px;
+      position: relative;
+      padding: 10px;
+      box-shadow: 0 5px 35px rgba(0, 0, 0, 0.1);
+      border-radius: 100%;
+      img {
+        width: 35px;
+        margin: 0 auto;
+        position: absolute;
+        left: 12px;
+        top: 11px;
+        transition: all 0.4s ease-in;
+      }
+    }
+  }
+}
