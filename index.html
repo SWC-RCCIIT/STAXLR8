@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Speech Recognition</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="assets/css/main.min.css" />
+  </head>
+  <body>
+    <section class="voiceRecogWrapper">
+      <div class="sectionWrapper">
+        <div class="voiceRecog  bgcolor-white">
+          <div class="row justify-content-center align-items-center no-gutters">
+            <div class="col-12 col-md-5 order-1">
+              <div class="detailsBlockWrap">
+                <div class="detailsBlock bgcolor-white ">
+                  <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-9">
+                      <h4>Use Keywords</h4>
+                      <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Eveniet quaerat culpa cum rem? Minima quis
+                        voluptatem
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="detailsBlock bgcolor-white ">
+                  <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-9">
+                      <h4>Use Keywords</h4>
+                      <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Eveniet quaerat culpa cum rem? Minima quis
+                        voluptatem
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="detailsBlock bgcolor-white ">
+                  <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-9">
+                      <h4>Use Keywords</h4>
+                      <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Eveniet quaerat culpa cum rem? Minima quis
+                        voluptatem
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="miciconWrap" >
+                <div class="mic bgcolor-white mic-active" id="mic"> 
+                  <img src="assets/images/mic.png" class="" alt="" id="recordStart" />
+                  <img src="assets/images/wave.png" class="d-none" alt="" id="recordStop" />
+                  <!-- add class d-none in first image and remove it from second -->
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-7 order-0">
+              <div class="voiceRecogBlock d-block position-relative">
+                <h4>Click icon to Enter text .....</h4>
+                <!-- add class d-hidehtag in voiceRecogBlock div to hide h4 -->
+                <h1>Text Here:</h1>
+                <div class="contentBlock input-group">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>
