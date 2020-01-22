@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Doctor Login</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="assets/css/main.min.css" />
+  </head>
+  <body>
+    <section class="logsignWrapper">
+      <div class="sectionWrapper">
+        <div class="signWrap bg-white">
+          <div class="contentWrap bgcolor-gradient">
+            <div class="content">
+              <h3 class="d-none d-md-block">Welcome, Back!</h3>
+              <p>
+                To keep connected with us please login with your personal info .
+              </p>
+              <a href="{{__("/login")}}" class="changeFormBtn">Sign In</a>
+            </div>
+          </div>
+          <div class="signFormWrap">
+            <div class="loginForm logsign">
+              <h3 class="bgcolor-gradient">Sign Up to xyz</h3>
+                @foreach ($errors->all() as $error)
+
+                    <span class="mr-2" style="font-size: 10px;">{{ $error }}</span>
+
+                @endforeach
+              <form action="{{__("/register-doctor")}}" method="post" enctype="multipart/form-data" >
+                  @csrf
+                <div class="nameIcon formElement">
+                  <input
+                    type="text"
+                    name="name"
+                    id=""
+                    placeholder="Full Name"
+                    class=""
+                  />
+                </div>
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-6">
+                    <div class="emailIcon formElement">
+                      <input
+                        type="email"
+                        name="email"
+                        id=""
+                        placeholder="Email"
+                        class=""
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <div class="phoneIcon formElement ml-3">
+                      <input
+                        type="number"
+                        name="phone_number"
+                        id="phonenumber"
+                        placeholder="Phone Number"
+                        class=""
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-6">
+                    <div class="specilizationIcon formElement">
+                      <input
+                        type="text"
+                        name="specialization"
+                        id=""
+                        placeholder="Specialization"
+                        class=""
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <div class="registrationIcon formElement ml-3">
+                      <input
+                        type="text"
+                        name="registration"
+                        id=""
+                        placeholder="Registration Number"
+                        class=""
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="formElement passwordIcon">
+                  <input type="password" name="password" placeholder="Password" id="" />
+                </div>
+                <input
+                  type="submit"
+                  value="Sign Up"
+                  class="submitBtn bgcolor-gradient text-uppercase"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+      jQuery(document).ready(function() {
+        jQuery("#phonenumber").keypress(function(e) {
+          var length = jQuery(this).val().length;
+          if (length > 9) {
+            return false;
+          } else if (
+            e.which != 8 &&
+            e.which != 0 &&
+            (e.which < 48 || e.which > 57)
+          ) {
+            return false;
+          } else if (length == 0 && e.which == 48) {
+            return false;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
