@@ -17,7 +17,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css"
     />
-    <link rel="stylesheet" href="assets/css/main.min.css" />
+    <link rel="stylesheet" href="{{asset("assets/css/main.min.css")}}" />
   </head>
   <body>
     <section class="voiceRecogWrapper">
@@ -28,49 +28,42 @@
               <div class="detailsBlockMainWrap">
                 <div class="detailsBlockWrap d-none d-lg-block">
                   <div class="detailsBlock bgcolor-white ">
-                    <div class="row justify-content-between align-items-top">
-                      <div class="col-2">
-                        <img src="assets/images/steps.png" alt="" />
-                      </div>
-                      <div class="col-10">
+                    <div class="row">
+                      <div class="col-3"></div>
+                      <div class="col-9">
                         <h4>Steps</h4>
-                        <ul class="list-none">
-                          <li>
-                            Click the microphone icon and start speaking.
-                          </li>
-                          <li>
-                            Generate the prescription by clicking submit.
-                          </li>
-                          <li>
-                            Visit Dashboard to view and print prescription
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="detailsBlock bgcolor-white ">
-                    <div class="row justify-content-between align-items-top">
-                      <div class="col-2">
-                        <img src="assets/images/microphone.png" alt="" />
-                      </div>
-                      <div class="col-10">
-                        <h4>Use These Keywords while Dictating</h4>
                         <p>
-                          Name, Age, Gender, Symptoms, Diagnosis, Medicine,
-                          Advice
+                            <li>Click the microphone icon and start dictating the prescription.</li>
+                            <li>Generate the formatted prescription by clicking submit.</li>
+                            <li>Send the formatted prescription to the patient by clicking confirm. </li>
                         </p>
                       </div>
                     </div>
                   </div>
                   <div class="detailsBlock bgcolor-white ">
-                    <div class="row justify-content-between align-items-top">
-                      <div class="col-2">
-                        <img src="assets/images/note.png" alt="" />
-                      </div>
-                      <div class="col-10">
-                        <h4>Important Note</h4>
+                    <div class="row">
+                      <div class="col-3"></div>
+                      <div class="col-9">
+                        <h4>Use The Following Keywords while Dictating</h4>
                         <p>
-                          The fields can also be edited by keyboard.
+                            <li>Name</li>
+                            <li>Age</li>
+                            <li>Gender</li>
+                            <li>Symptoms</li>
+                            <li>Diagnosis</li>
+                            <li>Medication</li>
+                            <li>Advice</li>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="detailsBlock bgcolor-white ">
+                    <div class="row">
+                      <div class="col-3"></div>
+                      <div class="col-9">
+                        <h4>Note</h4>
+                        <p>
+                           The fields can also be edited by keyboard.
                         </p>
                       </div>
                     </div>
@@ -86,8 +79,8 @@
                     id="mic"
                   >
                     <div class="mic bgcolor-white">
-                      <img src="assets/images/mic.png" class="" alt="" />
-                      <img src="assets/images/wave.png" class="d-none" alt="" />
+                      <img src="{{url("assets/images/mic.png")}}" class="" alt="" />
+                      <img src="{{url("assets/images/wave.png")}}" class="d-none" alt="" />
                       <!-- add class d-none in first image and remove it from second -->
                     </div>
                   </a>
@@ -98,23 +91,39 @@
                     id="edit"
                   >
                     <div class="edit bgcolor-white">
-                      <img src="assets/images/edit.png" class="" alt="" />
+                      <img src="{{url("assets/images/edit.png")}}" class="" alt="" />
                       <img
-                        src="assets/images/writing.png"
+                        src="{{url("assets/images/writing.png")}}"
                         class="d-none"
                         alt=""
                       />
                       <!-- add class d-none in first image and remove it from second -->
                     </div>
                   </a>
+                    <a
+                        href="javascript:void(0);"
+                        title="Click to edit"
+                        class="editiconWrap"
+                        id="edit"
+                    >
+                        <div class="submit bgcolor-white">
+                            <img src="{{url("assets/images/password.png")}}" class="" alt="" />
+                            <img
+                                src="{{url("assets/images/password.png")}}"
+                                class="d-none"
+                                alt=""
+                            />
+                            <!-- add class d-none in first image and remove it from second -->
+                        </div>
+                    </a>
                   <a
-                    href="dashboard.html"
+                    href="dashboard.blade.php"
                     title="Dashboard"
                     class="usericonWrap"
                   >
                     <div class="user bgcolor-white">
                       <img
-                        src="assets/images/userdashboard.png"
+                        src="{{url("assets/images/userdashboard.png")}}"
                         class=""
                         alt=""
                       />
@@ -129,7 +138,8 @@
                 <!-- add class d-hidehtag in voiceRecogBlock div to hide h4 -->
                 <div class="contentBlock">
                   <!-- add class editActive in contentBlock div to make borders in input visible -->
-                  <form action="#">
+                  <form action="{{__("/prescription-create")}}" method="post" enctype="multipart/form-data">
+                      @csrf
                     <div
                       class="patientDetails d-flex align-items-center justify-content-center"
                     >
@@ -137,101 +147,76 @@
                         type="text"
                         class=""
                         name="patientName"
-                        value="Name"
+                        value="{{\App\Patient::find($prescription->patients_id)->name}}"
                       />
                       <input
                         type="text"
                         class=""
                         value="Age"
-                        name="patientAge"
+                        name="{{\App\Patient::find($prescription->patients_id)->age}}"
                       />
                       <input
                         type="text"
                         class=""
                         value="Gender"
-                        name="patientGender"
+                        name="{{\App\Patient::find($prescription->patients_id)->gender}}"
                       />
                     </div>
                     <div class="row justify-content-center mt-4">
-                      <div class="col-lg-12">
+                      <div class="col-lg-4 borderRight">
                         <div class="symptomsDetails">
-                          <div class="row justify-content-center">
-                            <div class="col-4 col-md-3">
-                              <label for="patientSymptoms">Symptoms : </label>
-                            </div>
-                            <div class="col-8 col-md-9">
-                              <textarea
-                                name=""
-                                id=""
-                                rows="8"
-                                value=""
-                                name="patientSymptoms"
-                                onkeyup="textAreaAdjust(this)"
-                              ></textarea>
-                            </div>
-                          </div>
+                          <textarea
+                            name="symptoms"
+                            id=""
+                            rows="10"
+                            value=""
+                            name="patientSymptoms"
+                            onkeyup="textAreaAdjust(this)"
+                          >
+{{$prescription->symptoms}}</textarea
+                          >
                         </div>
                         <div class="diagnosisDetails">
-                          <div class="row justify-content-center">
-                            <div class="col-4 col-md-3">
-                              <label for="patientDiagnosis">Diagnosis : </label>
-                            </div>
-                            <div class="col-8 col-md-9">
-                              <textarea
-                                name=""
-                                id=""
-                                rows="8"
-                                value=""
-                                name="patientDiagnosis"
-                                onkeyup="textAreaAdjust(this)"
-                              >
-                              </textarea>
-                            </div>
-                          </div>
+                          <textarea
+                            name="diagnosis"
+                            id=""
+                            rows="10"
+                            value=""
+                            name="patientDiagnosis"
+                            onkeyup="textAreaAdjust(this)"
+                          >
+Diagnosis</textarea
+                          >
                         </div>
+                      </div>
+                      <div class="col-lg-8">
                         <div class="medicineDetails">
-                          <div class="row justify-content-center">
-                            <div class="col-4 col-md-3">
-                              <label for="patientMedicine">Medicine : </label>
-                            </div>
-                            <div class="col-8 col-md-9">
-                              <textarea
-                                name=""
-                                id=""
-                                rows="8"
-                                value=""
-                                name="patientMedicine"
-                                onkeyup="textAreaAdjust(this)"
-                              ></textarea>
-                            </div>
-                          </div>
+                          <textarea
+                            name="medicine"
+                            id=""
+                            rows="10"
+                            value=""
+                            name="patientMedicine"
+                            onkeyup="textAreaAdjust(this)"
+                          >
+Medicine</textarea
+                          >
                         </div>
                         <div class="adviceDetails">
-                          <div class="row justify-content-center">
-                            <div class="col-4 col-md-3">
-                              <label for="patientAdvice">Advice : </label>
-                            </div>
-                            <div class="col-8 col-md-9">
-                              <textarea
-                                name=""
-                                id=""
-                                rows="8"
-                                value=""
-                                name="patientAdvice"
-                                onkeyup="textAreaAdjust(this)"
-                              ></textarea>
-                            </div>
-                          </div>
+                          <textarea
+                            name="advice"
+                            id=""
+                            rows="10"
+                            value=""
+                            name="patientAdvice"
+                            onkeyup="textAreaAdjust(this)"
+                          >
+Advice</textarea
+                          >
                         </div>
                       </div>
                     </div>
-                    <div class="voiceBtn">
-                      <input
-                        type="submit"
-                        value="Submit"
-                        class="submitBtn text-uppercase"
-                      />
-                    </div>
+                      <button type="submit">submit</button>
                   </form>
                 </div>
               </div>

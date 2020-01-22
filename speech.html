@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Speech</title>
+</head>
+<body>
+    <div style="margin-bottom:30px;">
+    <p id="adding"></p></div>
+    <div>
+        <h1>Name:</h1>
+        <p id="name"></p>
+    </div>
+    <div>
+        <h1>Age:</h1>
+        <p id="age"></p>
+    </div>
+    <div>
+        <h1>Gender:</h1>
+        <p id="gender"></p>
+    </div>
+    <div>
+        <h1>Symptoms:</h1>
+        <p id="symptoms"></p>
+    </div>
+    <div>
+        <h1>Prescirption:</h1>
+        <p id="prescription"></p>
+    </div>
+    <div>
+        <h1>Advice:</h1>
+        <p id="advice"></p>
+    </div>
+</body>
+
+<script>
+
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+const recognition = new SpeechRecognition();
+recognition.interimResults = true;
+
+let p = document.createElement('p');
+const words = document.getElementById('adding');
+
+words.appendChild(p);
+
+let finalTranscript = "";
+
+recognition.onresult=(event) => {
+    const transcript = Array.from(event.results)
+                        .map(result => result[0]).map(result => result.transcript).join("");
+    if(event.results[0].isFinal){
+        findKeyword(transcript);
+    }
+    
+    // console.log(finalTranscript);
+
+    p.textContent = transcript;
+    if(event.results[0].isFinal){
+        p = document.createElement('span');
+        words.appendChild(p);
+    }
+
+    finalTranscript = transcript;
+    
+}
+// console.log(finalTranscript);
+
+recognition.onspeechend = function (){
+    console.log("end");
+}
+
+recognition.onend = ()=>{
+    
+    recognition.start();
+    // console.log(finalTranscript);
+    // var t =finalTranscript[0].split(" ");
+    // console.log(t);
+    // if(t.includes(name)){
+    //     console.log();
+    // }
+};
+recognition.start();
+
+recognition.onsoundstart = function(){
+    
+  console.log("Listening");
+};
+
+recognition.onsoundend = function(){
+    
+    console.log("stopped");
+};
+
+function findKeyword(ts){
+    const firstWord = ts.split(" ");
+    keyWord = firstWord[0].toLowerCase();
+    keyIndex = keyWord.length;
+    console.log(keyWord);
+    if(keyWord == 'neem' || keyWord == 'name'){
+        buildName(ts.substring(keyIndex));
+    }
+    if(keyWord == 'age'){
+        buildAge(ts.substring(keyIndex));
+    }
+    if(keyWord == 'diagnosis' || keyWord== 'digonosis   '){
+        buildAge(ts.substring(keyIndex));
+    }
+    if(keyWord == 'gender'){
+        buildGender(ts.substring(keyIndex));
+    }
+    if(keyWord == 'symptom' || keyWord == 'symptoms'){
+        buildSymptoms(ts.substring(keyIndex));
+    }
+    if(keyWord == 'prescription' || keyWord == 'prescription'){
+        buildPrescription(ts.substring(keyIndex));
+    }
+    if(keyWord == 'advice' || keyWord == 'advise ' || keyWord == 'vice' || keyWord == 'adwise'){
+        buildAdvice(ts.substring(keyIndex));
+    }
+
+};
+
+function buildName(string){
+    document.getElementById('name').innerText = string;
+}
+
+function buildAge(string){
+    document.getElementById('age').innerText = string;
+}
+
+function buildGender(string){
+    document.getElementById('gender').innerText = string;
+}
+
+function buildSymptoms(string){
+    document.getElementById('symptoms').innerText = string;
+}
+
+function buildPrescription(string){
+    document.getElementById('prescription').innerText = string;
+}
+
+function buildAdvice(string){
+    document.getElementById('advice').innerText = string;
+}
+
+</script>
+</html>
