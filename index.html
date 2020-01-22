@@ -25,61 +25,144 @@
         <div class="voiceRecog  bgcolor-white">
           <div class="row justify-content-center align-items-center no-gutters">
             <div class="col-12 col-md-5 order-1">
-              <div class="detailsBlockWrap">
-                <div class="detailsBlock bgcolor-white ">
-                  <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-9">
-                      <h4>Use Keywords</h4>
-                      <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Eveniet quaerat culpa cum rem? Minima quis
-                        voluptatem
-                      </p>
+              <div class="detailsBlockMainWrap">
+                <div class="detailsBlockWrap">
+                  <div class="detailsBlock bgcolor-white ">
+                    <div class="row">
+                      <div class="col-3"></div>
+                      <div class="col-9">
+                        <h4>Use Keywords</h4>
+                        <p>
+                          Lorem, ipsum dolor sit amet consectetur adipisicing
+                          elit. Eveniet quaerat culpa cum rem? Minima quis
+                          voluptatem
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="detailsBlock bgcolor-white ">
+                    <div class="row">
+                      <div class="col-3"></div>
+                      <div class="col-9">
+                        <h4>Use Keywords</h4>
+                        <p>
+                          Lorem, ipsum dolor sit amet consectetur adipisicing
+                          elit. Eveniet quaerat culpa cum rem? Minima quis
+                          voluptatem
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="detailsBlock bgcolor-white ">
+                    <div class="row">
+                      <div class="col-3"></div>
+                      <div class="col-9">
+                        <h4>Use Keywords</h4>
+                        <p>
+                          Lorem, ipsum dolor sit amet consectetur adipisicing
+                          elit. Eveniet quaerat culpa cum rem? Minima quis
+                          voluptatem
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="detailsBlock bgcolor-white ">
-                  <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-9">
-                      <h4>Use Keywords</h4>
-                      <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Eveniet quaerat culpa cum rem? Minima quis
-                        voluptatem
-                      </p>
+                <div
+                  class="d-flex d-flex-wrap justify-content-center align-items-center"
+                >
+                  <div class="miciconWrap" id="mic">
+                    <div class="mic bgcolor-white">
+                      <img src="assets/images/mic.png" class="" alt="" />
+                      <img src="assets/images/wave.png" class="d-none" alt="" />
+                      <!-- add class d-none in first image and remove it from second -->
                     </div>
                   </div>
-                </div>
-                <div class="detailsBlock bgcolor-white ">
-                  <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-9">
-                      <h4>Use Keywords</h4>
-                      <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Eveniet quaerat culpa cum rem? Minima quis
-                        voluptatem
-                      </p>
+                  <div class="editiconWrap" id="edit">
+                    <div class="edit bgcolor-white">
+                      <img src="assets/images/edit.png" class="" alt="" />
+                      <img
+                        src="assets/images/writing.png"
+                        class="d-none"
+                        alt=""
+                      />
+                      <!-- add class d-none in first image and remove it from second -->
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="miciconWrap" >
-                <div class="mic bgcolor-white mic-active" id="mic"> 
-                  <img src="assets/images/mic.png" class="" alt="" id="recordStart" />
-                  <img src="assets/images/wave.png" class="d-none" alt="" id="recordStop" />
-                  <!-- add class d-none in first image and remove it from second -->
                 </div>
               </div>
             </div>
             <div class="col-12 col-md-7 order-0">
-              <div class="voiceRecogBlock d-block position-relative">
+              <div class="voiceRecogBlock d-block position-relative d-hidehtag">
                 <h4>Click icon to Enter text .....</h4>
                 <!-- add class d-hidehtag in voiceRecogBlock div to hide h4 -->
-                <h1>Text Here:</h1>
-                <div class="contentBlock input-group">
+                <div class="contentBlock">
+                  <!-- add class editActive in contentBlock div to make borders in input visible -->
+                  <form action="#">
+                    <div
+                      class="patientDetails editActive d-flex align-items-center justify-content-center"
+                    >
+                      <input
+                        type="text"
+                        class=""
+                        name="patientName"
+                        value="Md Aquiluzzaman Ansari"
+                      />
+                      <input
+                        type="text"
+                        class=""
+                        value="20"
+                        name="patientAge"
+                      />
+                      <input
+                        type="text"
+                        class=""
+                        value="Male"
+                        name="patientGender"
+                      />
+                    </div>
+                    <div class="row justify-content-center mt-4">
+                      <div class="col-lg-4">
+                        <div class="symptomsDetails editActive">
+                          <textarea
+                            name=""
+                            id=""
+                            rows="10"
+                            value=""
+                            name="patientSymptoms"
+                          ></textarea>
+                        </div>
+                        <div class="diagnosisDetails editActive">
+                          <textarea
+                            name=""
+                            id=""
+                            rows="10"
+                            value=""
+                            name="patientDiagnosis"
+                          ></textarea>
+                        </div>
+                      </div>
+                      <div class="col-lg-8">
+                        <div class="medicineDetails editActive">
+                          <textarea
+                            name=""
+                            id=""
+                            rows="10"
+                            value=""
+                            name="patientMedicine"
+                          ></textarea>
+                        </div>
+                        <div class="adviceDetails editActive">
+                          <textarea
+                            name=""
+                            id=""
+                            rows="10"
+                            value=""
+                            name="patientAdvice"
+                          ></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -89,6 +172,57 @@
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./assets/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+    <script>
+      $.fn.textWidth = function(_text, _font) {
+        //get width of text with font.  usage: $("div").textWidth();
+        var fakeEl = $("<span>")
+            .hide()
+            .appendTo(document.body)
+            .text(_text || this.val() || this.text())
+            .css("font", _font || this.css("font")),
+          width = fakeEl.width();
+        fakeEl.remove();
+        return width;
+      };
+
+      $.fn.autoresize = function(options) {
+        //resizes elements based on content size.  usage: $('input').autoresize({padding:10,minWidth:0,maxWidth:100});
+        options = $.extend(
+          { padding: 10, minWidth: 0, maxWidth: 10000 },
+          options || {}
+        );
+        $(this)
+          .on("input", function() {
+            $(this).css(
+              "width",
+              Math.min(
+                options.maxWidth,
+                Math.max(
+                  options.minWidth,
+                  $(this).textWidth() + options.padding
+                )
+              )
+            );
+          })
+          .trigger("input");
+        return this;
+      };
+
+      $("input").autoresize({ padding: 10, minWidth: 25, maxWidth: 300 });
+    </script>
+    <script>
+      // $.fn.textHeight = function(_text, _font) {
+      //   //get Height of text with font.  usage: $("div").textHeight();
+      //   var fakeEl = $("<span>")
+      //       .hide()
+      //       .appendTo(document.body)
+      //       .text(_text || this.val() || this.text())
+      //       .css("font", _font || this.css("font")),
+      //     width = fakeEl.width();
+      //   fakeEl.remove();
+      //   return width;
+      // };
+    </script>
   </body>
 </html>
